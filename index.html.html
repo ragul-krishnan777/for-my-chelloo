@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Cute Lil Papa | Ragul Krishnan M</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cormorant Garamond, Playfair Display, Cinzel, Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        regal: {
+                            950: '#1a002d',
+                            900: '#2E004B',
+                            800: '#4A154B',
+                            700: '#601a61',
+                            600: '#7B2CBF',
+                            500: '#9D4EDD',
+                            400: '#C77DFF',
+                            300: '#E0AAFF',
+                            200: '#f0d6ff',
+                            100: '#f7ebff',
+                            50: '#FAF5FF',
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA7C11',
+                            glow: '#FFE57F'
+                        }
+                    },
+                    fontFamily: {
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background: linear-gradient(180deg, #1a002d 0%, #2E004B 35%, #3d0d4e 70%, #1a002d 100%);
+            color: #FAF5FF;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Bridgerton Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a002d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7B2CBF;
+            border-radius: 4px;
+            border: 1px solid #D4AF37;
+        }
+
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.8);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .bridgerton-card {
+            background: rgba(46, 0, 75, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(199, 125, 255, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(199, 125, 255, 0.1);
+        }
+
+        .bridgerton-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 15px 35px -5px rgba(123, 44, 191, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF1B0 0%, #D4AF37 50%, #F3E5AB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .violet-gradient-text {
+            background: linear-gradient(135deg, #FAF5FF 0%, #E0AAFF 60%, #C77DFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shower-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            animation: floatUpAndFade 4s ease-out forwards;
+        }
+
+        @keyframes floatUpAndFade {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.6) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-90vh) scale(1.4) rotate(360deg);
+            }
+        }
+
+        /* Elegant Frame Accents */
+        .royal-corner-tl { top: -2px; left: -2px; border-top: 2px solid #D4AF37; border-left: 2px solid #D4AF37; }
+        .royal-corner-tr { top: -2px; right: -2px; border-top: 2px solid #D4AF37; border-right: 2px solid #D4AF37; }
+        .royal-corner-bl { bottom: -2px; left: -2px; border-bottom: 2px solid #D4AF37; border-left: 2px solid #D4AF37; }
+        .royal-corner-br { bottom: -2px; right: -2px; border-bottom: 2px solid #D4AF37; border-right: 2px solid #D4AF37; }
+    </style>
+</head>
+<body class="relative text-regal-100 antialiased selection:bg-regal-600 selection:text-white" onclick="createHeartOnClick(event)">
+
+    <!-- Background Violet Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Content Container -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+
+        <!-- Elegant Bridgerton Header Banner -->
+        <header class="w-full py-8 px-4 sm:px-8 flex flex-col items-center justify-center max-w-5xl mx-auto text-center border-b border-regal-600/30">
+            <div class="flex items-center space-x-3 mb-2">
+                <span class="text-gold text-xl">⚜️</span>
+                <span class="font-cinzel text-xs sm:text-sm text-gold tracking-[0.3em] uppercase">Lady Whispers Of The Heart</span>
+                <span class="text-gold text-xl">⚜️</span>
+            </div>
+            <h1 class="font-garamond italic text-2xl sm:text-3xl text-regal-300">Dedicated to My Eternal Favorite Person</h1>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 w-full space-y-16 py-10">
+
+            <!-- Intro Section (Exact User Text) -->
+            <section class="bridgerton-card rounded-3xl p-6 sm:p-10 relative overflow-hidden transition-all duration-500">
+                <div class="absolute royal-corner-tl w-6 h-6"></div>
+                <div class="absolute royal-corner-tr w-6 h-6"></div>
+                <div class="absolute royal-corner-bl w-6 h-6"></div>
+                <div class="absolute royal-corner-br w-6 h-6"></div>
+
+                <div class="text-center space-y-6">
+                    <div class="inline-block px-4 py-1 rounded-full bg-regal-800/80 border border-gold/40 text-gold-light text-xs font-cinzel tracking-wider">
+                        A Sincere Apology
+                    </div>
+
+                    <div class="space-y-4 text-base sm:text-lg font-garamond leading-relaxed text-regal-100 text-left sm:text-justify italic">
+                        <p class="text-lg sm:text-xl text-regal-200 not-italic font-semibold border-l-2 border-gold pl-4">
+                            You’re my cutiepieeeee, and I’m so sorry for being the asshole and the shitty person I’ve turned into. I know I can’t go back in time and undo all the hurt I’ve caused you, and that’s something I’ll always feel ashamed of. I’m sorry for making promises to you and then failing to back them up with my actions. You deserved so much better than that, and I hate that my actions have made you feel otherwise.
+                        </p>
+                        <p class="pt-2">
+                            And you’re right. You shouldn’t have to go to bed with a heavy heart every single night because of the same things I keep doing. It genuinely hurts to know that I’ve become the reason for so much of your pain, especially when you’re the person I never wanted to hurt in the first place. I’m so ashamed of the way I’ve behaved, and I’m truly sorry for putting you through all of this. You didn’t deserve any of it!
+                        </p>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-center space-x-2 text-gold text-xs font-cinzel uppercase tracking-widest opacity-80">
+                        <span>Scroll Down For My Heartfelt Letter</span>
+                        <i class="fa-solid fa-chevron-down animate-bounce ml-1 text-regal-300"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Heartfelt Letter Section (Exact Full Text) -->
+            <section id="letter-section">
+                <div class="bridgerton-card rounded-3xl p-6 sm:p-10 relative overflow-hidden border border-regal-500/30">
+                    
+                    <div class="flex items-center space-x-3 mb-8 border-b border-regal-600/40 pb-4">
+                        <div class="w-10 h-10 rounded-full bg-regal-800 flex items-center justify-center text-gold border border-gold/40">
+                            <i class="fa-solid fa-scroll text-lg"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-cinzel text-xl sm:text-2xl font-bold gold-gradient-text tracking-wide">A Heartfelt Letter To You</h2>
+                            <p class="text-xs text-regal-300 font-sans">From Ragul Krishnan M</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5 text-base sm:text-lg font-garamond leading-relaxed text-regal-100">
+                        <p class="font-bold text-xl text-regal-200">Hi love,</p>
+                        
+                        <p>
+                            I know I shattered you into <span class="text-gold font-bold">ONE ZILLION PIECES</span> and I’ve become the very man you’re scared of having to live under the same roof with. Boo, that’s the worst part of all of this. The person who was supposed to make you feel safe & at peace has become the very person causing you pain. I’m so sorry, love.
+                        </p>
+
+                        <p>
+                            I can only imagine how much you’ve been dealing( THE CRUCIFYING PAIN) with all these days how many nights you’ve gone to bed with a heavy heart because of me and how exhausting it must have been to keep going through the same things over and over and over and over again. I’m truly truly sorry for putting you through all of that honeypie!
+                        </p>
+
+                        <p>
+                            I’m not here to make another promise that I’ll become the person you fell in love with because I know I’ve made promises before and failed terribly. This time boo, I want my actions to speak for me. I want to make you feel like you’re my topmost priority not just through my words but through the little things I do every single day. And there will be a day, I want you to look at me and feel it in your gut that the man you fell in love with is finding his way back. Not because I told you so but because you can actually see and feel the difference in the way I love you. And when that day comes, I want you to finally feel at peace with me, boooo. You deserve that peace forever and ever boo!
+                        </p>
+
+                        <p>
+                            And I know that’s not going to happen overnight. I know I can’t expect you to suddenly believe everything I say just because I’ve finally started understanding where I’ve been going wrong. It’s going to take time and I understand that.
+                        </p>
+
+                        <p>
+                            Boo, I’ve been thinking about where I went wrong, and I think I’ve finally started understanding something about myself. Ever since we joined college, I started seeing you as an independent person who could take care of herself handle things on her own. And somewhere along the way, I think that changed the way I approached loving you. I started assuming that because you could handle things yourself I didn’t need to do as much as I used to. And I think that’s where I started losing the very things that made me the person you fell in love with.
+                        </p>
+
+                        <p>
+                            Because the Ragul Krishnan who came into your life before college wanted to do everything he could for you. He would think about possibilities, every little thing he could do to make your life easier, peaceful, to take care of you in a great manner, to make you feel loved without you even ask for it. He wanted to figure things out for you, stand by you, and make sure you never felt like you had to face everything alone. And somewhere along the way boo, I think I stopped it boo! That is the flaw booo and I realised it now, cause I’m promising you that I will love you tomorrow but I’m not now, how cruel that can be cause tomorrow I’m saying the same thing.
+                        </p>
+
+                        <p class="bg-regal-900/80 p-4 rounded-xl border-l-2 border-gold italic text-regal-200">
+                            "Promised you something but never even delivering it in the action and the accumulation of the suffering and pain is insufferable over a period of time boo!"
+                        </p>
+
+                        <p>
+                            But you know what honeypie? You being independent was never supposed to mean that you needed me any less than before boooooo. Just because you can take care of yourself doesn’t mean you should have to do everything yourself, especially when you have someone who is supposed to love you and be there for you( I’m a fucking ASSHOLE for thinking this way). You can be the strongest, most independent woman in the world and still deserve to be cared for, pampered, reassured, and loved in all those little ways. And I’m sorry I forgot the most important point of our relationship, that is you should be loved and cherished every single day like I used to do!
+                        </p>
+
+                        <p>
+                            It’s not that I stopped loving you chelooooo. It’s not that I’m pretending to love you or that my feelings for you have changed within me booo. I think I got too comfortable, stopped being as thoughtful as I used to be and utterly failed to realise what my behaviour was doing to you every single day. And none of that is an excuse( Please don’t think that I’m coming up with an excuse here boo and I’m not boo). Understanding where I went wrong doesn’t rectify the hurt I’ve caused you but I want to understand it properly so I don’t keep repeating the same mistakes.
+                        </p>
+
+                        <p>
+                            And from now on, I want to start looking at you with that same feeling I had when I first came into your life. I want to think of you as my <strong class="text-gold uppercase tracking-wider font-sans text-sm">CUTE LIL PAPA</strong>, someone I want to take care of(thinking of all the possibilities), someone whose happiness matters to me(Never let you sleep with a heavy heart instead of that I want your cheeks get sore because of smiling and blushing and laughing boo), someone I want to make life a little easier for. Whatever you need? It will be given to you even before you ask me honey and that’s the kind of love I was giving you before and I will be giving you here after as well honey!
+                        </p>
+
+                        <p>
+                            You can say that it’s all talk, NO walk at all but I will show you, honeypie. I will show you that I mean it and I know I have a lot to make up for, the lost time, the lost days where I didn’t love you enough, taking good care of you, letting you face all the battles all alone and I know it’s a lot booo but I will make sure, I will make up for those things boo! I’m not expecting you to forget everything that happened or to trust me overnight.
+                        </p>
+
+                        <p>
+                            I love you, boo. And I’m so sorry that somewhere along the way I stopped making you feel the way someone who is loved by me should feel. You deserve to feel safe with me, to feel cared for without even asking in the first place and to go to bed every night with a peaceful heart. I know I haven’t been giving you that and I’m truly sorry boooo!
+                        </p>
+
+                        <p>
+                            I want to do better love. Not just for a few days.
+                        </p>
+
+                        <p>
+                            Not just until things get better between us but because I finally understand that loving you means showing up for you even in the smallest ways, every single day. And I want my actions to be the reason you believe in me again baby boooo.
+                        </p>
+
+                        <div class="pt-8 flex flex-col items-end border-t border-regal-600/30">
+                            <p class="font-cinzel text-xl gold-gradient-text font-bold">Forever yours,</p>
+                            <p class="font-serif italic text-lg text-regal-200">Ragul Krishnan M</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Why You Are My Entire World (Exact 4 Categories) -->
+            <section class="space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-cinzel text-gold tracking-[0.2em] uppercase">My Endless Admiration</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold gold-gradient-text">Why You Are My Entire World</h2>
+                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- 1. Her Ravishing Smile -->
+                    <div class="bridgerton-card rounded-2xl p-6 relative overflow-hidden border border-regal-500/40 transition-transform duration-300 hover:-translate-y-1">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-regal-800 border border-gold/50 flex items-center justify-center text-gold text-lg">
+                                👑
+                            </div>
+                            <h3 class="font-cinzel font-bold text-lg text-gold-light">1. Her Ravishing Smile</h3>
+                        </div>
+                        <p class="font-garamond italic text-base text-regal-100 leading-relaxed pl-2 border-l border-regal-400">
+                            "Your smile makes my whole world glow, A thousand moon in a single smile, And one look from you makes my heart feel home."
+                        </p>
+                    </div>
+
+                    <!-- 2. Her Sunshine Vibes -->
+                    <div class="bridgerton-card rounded-2xl p-6 relative overflow-hidden border border-regal-500/40 transition-transform duration-300 hover:-translate-y-1">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-regal-800 border border-gold/50 flex items-center justify-center text-gold text-lg">
+                                🌻
+                            </div>
+                            <h3 class="font-cinzel font-bold text-lg text-gold-light">2. Her Sunshine Vibes</h3>
+                        </div>
+                        <p class="font-garamond italic text-base text-regal-100 leading-relaxed pl-2 border-l border-regal-400">
+                            "You bring sunshine to my cloudiest days, Turn ordinary moments into beautiful memories, And make the world feel warmer just by being you. You truly the human version of the sunflower!"
+                        </p>
+                    </div>
+
+                    <!-- 3. Her Mellifluous Voice -->
+                    <div class="bridgerton-card rounded-2xl p-6 relative overflow-hidden border border-regal-500/40 transition-transform duration-300 hover:-translate-y-1">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-regal-800 border border-gold/50 flex items-center justify-center text-gold text-lg">
+                                🎶
+                            </div>
+                            <h3 class="font-cinzel font-bold text-lg text-gold-light">3. Her Mellifluous Voice</h3>
+                        </div>
+                        <p class="font-garamond italic text-base text-regal-100 leading-relaxed pl-2 border-l border-regal-400">
+                            "Your voice is the sweetest melody I know, And when you sing, my heart forgets the world, If peace had a sound, it would sound like you."
+                        </p>
+                    </div>
+
+                    <!-- 4. Her Beauty -->
+                    <div class="bridgerton-card rounded-2xl p-6 relative overflow-hidden border border-regal-500/40 transition-transform duration-300 hover:-translate-y-1">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-full bg-regal-800 border border-gold/50 flex items-center justify-center text-gold text-lg">
+                                ✨
+                            </div>
+                            <h3 class="font-cinzel font-bold text-lg text-gold-light">4. Her Beauty</h3>
+                        </div>
+                        <p class="font-garamond italic text-base text-regal-100 leading-relaxed pl-2 border-l border-regal-400">
+                            "The prettiest soul in the loveliest face, A beauty no masterpiece could ever replace, And my favourite view, in every time and place."
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- PROMISES WRITTEN IN MY HEART (4 Custom Actionable Commitments) -->
+            <section class="space-y-8">
+                <div class="text-center space-y-2">
+                    <span class="text-xs font-cinzel text-gold tracking-[0.2em] uppercase">My Sacred Vows</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold gold-gradient-text">Promises Written In My Heart</h2>
+                    <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="bridgerton-card rounded-2xl p-6 border border-regal-500/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-cinzel text-gold bg-regal-900/80 px-3 py-1 rounded-full border border-gold/30">Vow I</span>
+                            <i class="fa-solid fa-heart text-regal-400"></i>
+                        </div>
+                        <h3 class="font-cinzel text-lg font-bold text-regal-100 mb-2">To Always Make You Feel Prioritized & Cherished</h3>
+                        <p class="font-garamond text-sm text-regal-200 leading-relaxed">
+                            No more taking you for granted or putting you second. My daily life, my future plans, and my heart will always have you at the very center.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bridgerton-card rounded-2xl p-6 border border-regal-500/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-cinzel text-gold bg-regal-900/80 px-3 py-1 rounded-full border border-gold/30">Vow II</span>
+                            <i class="fa-solid fa-hand-holding-heart text-regal-400"></i>
+                        </div>
+                        <h3 class="font-cinzel text-lg font-bold text-regal-100 mb-2">To Show Up Through Daily Actions, Not Empty Words</h3>
+                        <p class="font-garamond text-sm text-regal-200 leading-relaxed">
+                            No more promises that aren't delivered. I will prove my love through consistent, thoughtful actions every single day until you feel it in your gut.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bridgerton-card rounded-2xl p-6 border border-regal-500/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-cinzel text-gold bg-regal-900/80 px-3 py-1 rounded-full border border-gold/30">Vow III</span>
+                            <i class="fa-solid fa-moon text-regal-400"></i>
+                        </div>
+                        <h3 class="font-cinzel text-lg font-bold text-regal-100 mb-2">To Protect Your Sleep & Peace</h3>
+                        <p class="font-garamond text-sm text-regal-200 leading-relaxed">
+                            I will never let you go to bed with a heavy heart again. Instead, I want your cheeks to get sore from smiling, blushing, and laughing.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bridgerton-card rounded-2xl p-6 border border-regal-500/40">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-cinzel text-gold bg-regal-900/80 px-3 py-1 rounded-full border border-gold/30">Vow IV</span>
+                            <i class="fa-solid fa-crown text-regal-400"></i>
+                        </div>
+                        <h3 class="font-cinzel text-lg font-bold text-regal-100 mb-2">To Treat You As My Cute Lil Papa</h3>
+                        <p class="font-garamond text-sm text-regal-200 leading-relaxed">
+                            Just because you are independent doesn't mean you should carry everything alone. I am here to pamper, care for, and cherish you without you ever having to ask.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Interactive Heart Burst & Hug Section -->
+            <section class="bridgerton-card rounded-3xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden border border-gold/30">
+                <div class="max-w-md mx-auto space-y-3">
+                    <span class="text-xs font-cinzel text-gold tracking-[0.2em] uppercase">A Gentle Touch</span>
+                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold gold-gradient-text">Sending You All My Love & A Warm Hug</h2>
+                    <p class="font-garamond text-base text-regal-200 italic">
+                        Tap below whenever you feel heavy or need a quiet reminder that Ragul is here for you.
+                    </p>
+                </div>
+
+                <div class="flex justify-center pt-2">
+                    <button onclick="triggerLoveBurst(event)" class="px-8 py-4 rounded-full bg-gradient-to-r from-regal-600 via-regal-500 to-regal-700 text-white font-cinzel text-sm tracking-wider shadow-lg hover:shadow-regal-500/50 border border-gold/50 transition-all transform hover:scale-105 active:scale-95 flex items-center space-x-3">
+                        <i class="fa-solid fa-heart text-gold text-lg"></i>
+                        <span>Receive a Tight Hug & Kisses</span>
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Bridgerton Footer -->
+        <footer class="w-full py-8 text-center text-xs text-regal-300 border-t border-regal-600/30 mt-12 bg-regal-950/60 font-cinzel">
+            <p>Written with absolute devotion & honesty for my Cute Lil Papa.</p>
+            <p class="text-[10px] text-gold/70 mt-1">Forever Yours - Ragul Krishnan M</p>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript Particle Animation & Heart Shower Script -->
+    <script>
+        // Canvas Floating Hearts Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 14 + 8;
+                this.speedY = Math.random() * 0.7 + 0.3;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.swing = Math.random() * 0.02;
+                this.angle = Math.random() * Math.PI * 2;
+                this.color = Math.random() > 0.3 ? '#C77DFF' : '#E0AAFF';
+            }
+
+            update() {
+                this.y -= this.speedY;
+                this.angle += this.swing;
+                this.x += Math.sin(this.angle) * 0.6;
+
+                if (this.y < -20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.font = `${this.size}px Arial`;
+                ctx.fillText('♥', this.x, this.y);
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 30; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // Shower Love Burst Effect
+        function triggerLoveBurst(event) {
+            triggerShower(['💜', '✨', '💖', '👑', '🌸', '✨']);
+        }
+
+        function createHeartOnClick(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+            
+            const heart = document.createElement('div');
+            heart.className = 'shower-heart text-xl pointer-events-none';
+            heart.innerText = '💜';
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 2500);
+        }
+
+        function triggerShower(emojis) {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'shower-heart text-2xl';
+                    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    heart.style.left = `${Math.random() * 90 + 5}vw`;
+                    heart.style.top = `${window.innerHeight - 30}px`;
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 120);
+            }
+        }
+    </script>
+</body>
+</html>
